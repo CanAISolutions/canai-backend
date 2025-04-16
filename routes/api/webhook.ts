@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🚫 No explicit req/res types — let Express infer them
+// 🔥 DO NOT specify (req: Request, res: Response)
 app.post('/api/webhook', (req, res) => {
   if (req.method !== 'POST') return res.status(405).send('Method not allowed');
 
@@ -21,12 +21,10 @@ app.post('/api/webhook', (req, res) => {
     });
 });
 
-// Health route (optional)
 app.get('/', (_, res) => {
   res.send('✅ CanAI Router is running!');
 });
 
-// Port binding for Render
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 CanAI Router running at http://localhost:${PORT}`);
