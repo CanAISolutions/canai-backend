@@ -1,0 +1,6 @@
+const aiBlueprint = `
+Act as an expert AI Systems Architect...
+You help founders, solopreneurs, and micro-startups...
+`;
+
+export default aiBlueprint;

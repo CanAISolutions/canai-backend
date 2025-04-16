@@ -1,0 +1,6 @@
+const reverseStrategy = `
+Act as a hybrid expert: prompt engineer and reverse strategist...
+Build the OMNIPROMPT and reverse execution map...
+`;
+
+export default reverseStrategy;
