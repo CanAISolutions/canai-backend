@@ -4,7 +4,7 @@
   "description": "This is the official GPT routing backend for CanAI Solutions.",
   "main": "dist/routes/api/webhook.js",
   "scripts": {
-    "dev": "ts-node src/routes/api/webhook.ts",
+    "dev": "ts-node routes/api/webhook.ts",
     "build": "tsc",
     "start": "node dist/routes/api/webhook.js"
   },
@@ -32,3 +32,4 @@
     "typescript": "^5.8.3"
   }
 }
+

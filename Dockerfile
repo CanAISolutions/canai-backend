@@ -1,4 +1,4 @@
-# Use official Node.js image as base
+# Use official Node.js image
 FROM node:20-alpine
 
 # Set working directory
@@ -6,13 +6,16 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 
-# Copy app source
+# Copy all source files
 COPY . .
 
-# Expose API port (Render default)
+# Compile TypeScript to JS
+RUN npm run build
+
+# Expose Render default port
 EXPOSE 3000
 
-# Run the app
-CMD ["npm", "run", "start"]
+# Run the compiled output
+CMD ["npm", "start"]
