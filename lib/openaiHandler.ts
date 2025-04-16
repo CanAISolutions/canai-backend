@@ -1,24 +1,17 @@
-interface OpenAIResponse {
-  choices?: Array<{
-    message?: {
-      content?: string;
-    };
-  }>;
-}
+import { OpenAI } from "openai";
+import { PromptInput } from "./types";
+import { composePrompt } from "./composePrompt";
 
-export async function handleOpenAIRequest(prompt: string): Promise<string> {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
-    },
-    body: JSON.stringify({
-      model: 'gpt-4',
-      messages: [{ role: 'user', content: prompt }]
-    })
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+
+export const handlePromptGeneration = async (input: PromptInput) => {
+  const fullPrompt = composePrompt(input);
+
+  const completion = await openai.chat.completions.create({
+    model: "gpt-4o",
+    messages: [{ role: "user", content: fullPrompt }],
+    temperature: 0.7,
   });
 
-  const json = await response.json() as OpenAIResponse;
-  return json.choices?.[0]?.message?.content || '[No response]';
-}
+  return completion.choices[0].message.content;
+};
