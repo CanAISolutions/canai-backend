@@ -1,20 +1,24 @@
-export async function openaiHandler(systemPrompt: string, userPrompt: string) {
-  const apiKey = process.env.OPENAI_API_KEY;
+interface OpenAIResponse {
+  choices?: Array<{
+    message?: {
+      content?: string;
+    };
+  }>;
+}
+
+export async function handleOpenAIRequest(prompt: string): Promise<string> {
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
     },
     body: JSON.stringify({
-      model: 'gpt-4o',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt }
-      ]
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: prompt }]
     })
   });
 
-  const json = await response.json();
+  const json = await response.json() as OpenAIResponse;
   return json.choices?.[0]?.message?.content || '[No response]';
 }

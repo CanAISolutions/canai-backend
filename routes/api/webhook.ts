@@ -1,6 +1,7 @@
 import { promptTypeRouter } from './promptTypeRouter';
+import { Request, Response } from 'express';
 
-export default async function handler(req, res) {
+export default async function handler(req: Request, res: Response) {
   if (req.method !== 'POST') return res.status(405).send('Method not allowed');
   try {
     const result = await promptTypeRouter(req.body);

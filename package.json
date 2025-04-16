@@ -1,0 +1,34 @@
+{
+  "name": "canai-router-v6.1.1",
+  "version": "1.0.0",
+  "description": "This is the official GPT routing backend for CanAI Solutions.",
+  "main": "dist/routes/api/webhook.js",
+  "scripts": {
+    "dev": "ts-node src/routes/api/webhook.ts",
+    "build": "tsc",
+    "start": "node dist/routes/api/webhook.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CanAISolutions/canai-backend.git"
+  },
+  "keywords": [],
+  "author": "CanAI Solutions",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CanAISolutions/canai-backend/issues"
+  },
+  "homepage": "https://github.com/CanAISolutions/canai-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "openai": "^4.95.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
