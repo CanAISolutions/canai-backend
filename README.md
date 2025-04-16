@@ -1,0 +1,3 @@
+# CanAI Backend – v6.1.1 (Cursor + Render Edition)
+
+This is the official GPT routing backend for CanAI Solutions...
