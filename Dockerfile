@@ -1,21 +1,18 @@
-# Base image
+# Use Node with optional build tools
 FROM node:18
 
-# Create app directory
+# Set working directory
 WORKDIR /app
 
-# Copy app files
-COPY . .
-
-# Install deps
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Compile TypeScript (if needed)
-RUN npm run build || true
+# Copy everything else
+COPY . .
 
-# Expose port
+# Expose the server port
 EXPOSE 3001
 
-# Start server
-CMD ["npx", "ts-node", "server.ts"]
-
+# Use tsx to run TypeScript without building
+CMD ["npx", "tsx", "server.ts"]
