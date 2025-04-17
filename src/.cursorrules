@@ -1,0 +1,23 @@
+# Cursor Rules for CanAI Solutions
+
+[types]
+Prefer interfaces and type aliases for all input shapes
+
+[functions]
+- Always validate inputs and support fallbacks
+- Use clear function names like composePrompt or handlePromptType
+- Add type annotations for all parameters and returns
+- When accessing APIs (e.g., OpenAI), wrap in a handler and abstract config
+- Prefer named exports
+
+[style]
+- Use 2-space indentation
+- Consistent single quotes
+- Prefer arrow functions
+- Comment all logic blocks that may be GPT-processed or tested
+
+[project-specific]
+- Prompt templates live in promptTemplates/*.ts and match promptType
+- Routes are handled by handlePromptType() via a Set of valid types
+- Prompts are composed using composePrompt(), which merges template with inputs
+- API keys must always come from process.env

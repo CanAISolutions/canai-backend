@@ -2,6 +2,8 @@ import { composePrompt } from "./src/composePrompt";
 import { PromptInput } from "./src/types";
 import fs from "fs";
 import path from "path";
+import { estimateTokens, estimateCostUSD } from "./src/utils/tokenEstimator";
+import { logPromptToCSV } from "./src/utils/promptLogger";
 
 const testCases: PromptInput[] = [
   {
@@ -91,12 +93,19 @@ for (const testCase of testCases) {
     console.log(`✅ ${testCase.promptType} output:\n`);
     console.log(output);
 
-    const tokenCount = Math.round(output.split(/\s+/).length / 0.75);
-    console.log(`🔢 Estimated tokens: ${tokenCount}`);
+    const tokenCount = estimateTokens(output);
+    const costEstimate = estimateCostUSD(tokenCount);
 
+    console.log(`🔢 Estimated tokens: ${tokenCount}`);
+    console.log(`💵 Estimated cost: $${costEstimate}`);
+
+    // Save markdown
     const outputPath = path.join("output", `${testCase.promptType}.md`);
     fs.writeFileSync(outputPath, output, "utf8");
     console.log(`📄 Saved to ${outputPath}`);
+
+    // Save to QA log
+    logPromptToCSV(testCase.promptType, output);
 
     console.log("\n" + "=".repeat(80) + "\n");
   } catch (err: any) {

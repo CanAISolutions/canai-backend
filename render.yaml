@@ -6,5 +6,5 @@ services:
     buildCommand: npm install
     startCommand: npx ts-node server.ts
     envVars:
-      - key: NODE_ENV
-        value: production
+      - key: OPENAI_API_KEY
+        sync: false
