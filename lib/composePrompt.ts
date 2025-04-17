@@ -1,29 +1,13 @@
-import OpenAI from 'openai';
-import dotenv from 'dotenv';
-dotenv.config();
+import { PromptInput } from "./types";
+import { getPromptTemplate } from "./promptTypeRouter";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+export const composePrompt = ({ promptType, inputs, marketRegion }: PromptInput): string => {
+  const template = getPromptTemplate(promptType);
 
-export async function composeBusinessPlanPrompt(input: {
-  challenge: string;
-  tone: string;
-  marketRegion: string;
-}): Promise<string> {
-  const { challenge, tone, marketRegion } = input;
+  const withRegion = template.replace(/{{marketRegion}}/g, marketRegion || "Canada");
 
-  const systemPrompt = `You are a strategic business consultant who writes clear, compelling AI-generated business plans tailored to each user's tone and region.`;
-
-  const userPrompt = `Write a business plan to help a company in ${marketRegion} with the following challenge: "${challenge}". The tone should be ${tone}. Make it detailed, practical, and written in clean paragraphs.`;
-
-  const chat = await openai.chat.completions.create({
-    model: 'gpt-4o',
-    messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt },
-    ],
-  });
-
-  return chat.choices[0].message.content ?? "No response generated.";
-}
+  return Object.entries(inputs).reduce((prompt, [key, value]) => {
+    const placeholder = `{{${key}}}`;
+    return prompt.replace(new RegExp(placeholder, "g"), value || "");
+  }, withRegion);
+};

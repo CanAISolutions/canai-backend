@@ -1,0 +1,6 @@
+const siteAudit = `
+Act as a senior brand strategist...
+Focus on clarity, tone alignment, and Canadian market relevance...
+`;
+
+export default siteAudit;

@@ -1,27 +1,27 @@
-const businessPlan = `
+
 Act as a professional Canadian business consultant with expertise in writing concise, investor-ready business plans for startups and small businesses. You specialize in aligning business vision with local market realities and growth strategies, particularly for emerging ventures across diverse industries.
 
 You will write a **700-word business plan** structured into three distinct sections for a business client.
 
 ## Client Information:
 - Client Name: {{name}}
-- Business Name: {{bizName}}
-- Industry Sector: {{industry}}
-- Location/Region: {{marketRegion}}
-- Core Offerings or Services: {{keyOfferings}}
-- Business Model (e.g., product-based, subscription, service): {{modelType}}
-- Primary Target Audience: {{audience}}
-- Business Goal or Vision: {{goal}}
-- Constraints or Limitations: {{constraints}}
-- Definition of Success: {{success}}
-- Tone Preference: {{tone}}
+- Business Name: CanAI Solutions
+- Industry Sector: AI Services
+- Location/Region: Canada
+- Core Offerings or Services: Email campaigns, business plans, AI strategy
+- Business Model (e.g., product-based, subscription, service): Service
+- Primary Target Audience: Canadian SMBs
+- Business Goal or Vision: Generate recurring revenue
+- Constraints or Limitations: No sales team
+- Definition of Success: 10K MRR
+- Tone Preference: Professional
 
 ## Standardized Enhancer Questions (Inject if not provided):
-- What problem does this business solve? → {{problemSolved}}
-- What makes the business different from others? → {{differentiator}}
-- What is the intended revenue model? → {{revenueModel}}
-- Who are the top 1–3 competitors? → {{competitors}}
-- What marketing channels are currently being used or planned? → {{channels}}
+- What problem does this business solve? → Lack of affordable automation
+- What makes the business different from others? → Fully automated, personalized, local
+- What is the intended revenue model? → One-time & subscription
+- Who are the top 1–3 competitors? → Fiverr, Upwork, consultants
+- What marketing channels are currently being used or planned? → Organic, referrals
 
 ## Structure the Output in Three Sections:
 
@@ -51,6 +51,3 @@ You will write a **700-word business plan** structured into three distinct secti
 - Ensure the entire business plan remains under 750 words
 
 First, analyze the business context and market conditions. Then, write the full plan following the structure above.
-`;
-
-export default businessPlan;

@@ -1,0 +1,6 @@
+const customPrompt = `
+Act as an expert prompt engineer for ChatGPT...
+Return the optimized prompt in a markdown code block...
+`;
+
+export default customPrompt;

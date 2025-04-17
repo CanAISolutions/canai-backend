@@ -1,0 +1,21 @@
+{
+  "name": "Billy Wood",
+  "promptType": "business_plan",
+  "marketRegion": "Canada",
+  "inputs": {
+    "bizName": "CanAI Solutions",
+    "goal": "Generate recurring revenue",
+    "tone": "Professional",
+    "industry": "AI Services",
+    "keyOfferings": "Email campaigns, business plans, AI strategy",
+    "modelType": "Service",
+    "audience": "Canadian SMBs",
+    "constraints": "No sales team",
+    "success": "10K MRR",
+    "problemSolved": "Lack of affordable automation",
+    "differentiator": "Fully automated, personalized, local",
+    "revenueModel": "One-time & subscription",
+    "competitors": "Fiverr, Upwork, consultants",
+    "channels": "Organic, referrals"
+  }
+}
