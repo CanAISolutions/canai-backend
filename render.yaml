@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: canai-router
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npx ts-node server.ts
+    envVars:
+      - key: NODE_ENV
+        value: production

@@ -1,8 +1,11 @@
-import { OpenAI } from "openai";
+import OpenAI from "openai";
 import { PromptInput } from "./types";
 import { composePrompt } from "./composePrompt";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+// Securely access your API key from environment variables
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY!,
+});
 
 export const handlePromptGeneration = async (input: PromptInput) => {
   const fullPrompt = composePrompt(input);

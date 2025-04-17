@@ -17,4 +17,3 @@ Use natural language, short paragraphs, and bulleted lists where helpful.
 `.trim();
 
 export default aiBrandIdentityTemplate;
-

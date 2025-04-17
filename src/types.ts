@@ -5,7 +5,6 @@ export type PromptType =
   | "ai_blueprint"
   | "site_audit"
   | "reverse_strategy"
-  | "ai_brand_identity"
   | "custom_prompt";
 
 export interface PromptInput {
